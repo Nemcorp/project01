@@ -10,7 +10,40 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
-
+const quotes = [
+	{
+		quote: "She sorta forgot about the iron fleet.",
+		source: "D&D",
+		citation: "Talking Thrones",
+		year: 2019,
+		tag: "tragedy"
+	},	
+	{
+		quote: "Good times become good memories, but bad times make good lessons.",
+		source: "Uncle Iroh",
+		citation: "Avatar the Last Airbender",
+		year: 2004,
+		tag: "wisdom"
+	},	
+	{
+		quote: "It's not about deserve... It's about believe",
+		source: "Diana Prince",
+		citation: "Wonder Woman",
+		year: 2017,
+		tag: "wisdom"
+	},	
+	{
+		quote: "A society grows great when old men plant trees whose shade they will never sit in.",
+		source: "Greek Proverb",
+		tag: "wisdom"
+	},	
+	{
+		quote: "Fool me once, shame on you. Fool me- you can't get fooled again",
+		source: "Tennesse Proverb",
+		year: 2002,
+		tag: "wisdom"
+	},	
+];
 
 
 /***
