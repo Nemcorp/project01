@@ -47,8 +47,13 @@ const quotes = [
 
 
 /***
+ * selects and returns a random quote from the quotes array
  * `getRandomQuote` function
 ***/
+function getRandomQuote(){
+	let rand = Math.floor(Math.random()*quotes.length);
+	return quotes[rand];
+}
 
 
 
