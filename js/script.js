@@ -3,10 +3,6 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 // stores the last chosen random, so that we don't choose it twice in a row
 var lastRandom;
 
@@ -50,12 +46,31 @@ const quotes = [
 
 
 
-/***
- * Selects and returns a random quote from the quotes array
- * `getRandomQuote` function
+// call init in page load to load first quote and start timer
+init();
+
+
+
+
+
+/**
+ * Called on page load. Starts a timer to print a new quote every 8 seconds.
+ * Sets an initial random quote.
+ */
+function init() {
+	printQuote();
+	setInterval(printQuote, 8000);
+}
+
+
+
+/**
+ * Selects and returns a semi-random quote from the quotes array
+ * `getRandomQuote` function. Will never select the same quote twice
+ * in a row.
  *
- *
-***/
+ * @return {Object} A quote object randomly chosen from the quotes array
+ */
 function getRandomQuote(){
 	let rand = Math.floor(Math.random()*quotes.length);
 
@@ -70,13 +85,12 @@ function getRandomQuote(){
 
 
 
-/***
- * Creates an html string based on a random quote. Updates the quote-box to 
+/**
+ * Creates an HTML string based on a random quote. Updates the quote-box to 
  * contain the generated string
  *
- *
- *
-***/
+ * @return {string} The HTML string generated using a randomly fetched quote
+ */
 function printQuote() {
 	let quote = getRandomQuote();
 
@@ -109,12 +123,12 @@ function printQuote() {
 }
 
 
-/***
+
+/**
  * Generates a random color string (rgb format) and returns it as a string
  *
- *
- *
-***/
+ * @return {string} String representation of a random rgb code
+ */
 function randomColor(){
 	let randRed, randGreen, randBlue;
 	randRed = Math.floor(Math.random()*255);
@@ -123,6 +137,8 @@ function randomColor(){
 
 	return `rgb(${randRed},${randGreen},${randBlue})`;
 }
+
+
 
 
 /***
