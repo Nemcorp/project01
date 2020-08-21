@@ -19,32 +19,32 @@ const quotes = [
 		source: "D&D",
 		citation: "Talking Thrones",
 		year: 2019,
-		tag: "tragedy"
+		tag: "(tragedy)"
 	},	
 	{
 		quote: "Good times become good memories, but bad times make good lessons.",
 		source: "Uncle Iroh",
 		citation: "Avatar the Last Airbender",
 		year: 2004,
-		tag: "wisdom"
+		tag: "(wisdom)"
 	},	
 	{
 		quote: "It's not about deserve... It's about believe",
 		source: "Diana Prince",
 		citation: "Wonder Woman",
 		year: 2017,
-		tag: "wisdom"
+		tag: "(wisdom)"
 	},	
 	{
 		quote: "A society grows great when old men plant trees whose shade they will never sit in.",
 		source: "Greek Proverb",
-		tag: "wisdom"
+		tag: "(wisdom)"
 	},	
 	{
 		quote: "Fool me once, shame on you. Fool me- you can't get fooled again",
 		source: "Tennesse Proverb",
 		year: 2002,
-		tag: "wisdom"
+		tag: "(wisdom)"
 	},	
 ];
 
@@ -79,23 +79,50 @@ function getRandomQuote(){
 ***/
 function printQuote() {
 	let quote = getRandomQuote();
+
 	let htmlString = `
 		<p class="quote"> ${quote.quote} </p>
 		<p class="source"> ${quote.source} 
 	`;
 
+	// generate additional quote add-on information if available
 	if(quote.citation){
 		htmlString += `<span class="citation"> ${quote.citation} </span>`
 	}
 	if(quote.year){
 		htmlString += `<span class="year"> ${quote.year} </span>`
 	}
+	if(quote.tag){
+		htmlString += `<span class="tag"> ${quote.tag} </span>`
+	}
+
+	// closing tag
 	htmlString += `</p>`;
 
+
+	// update quote text
 	document.getElementById('quote-box').innerHTML = htmlString; 
+	
+	// update background color
+	document.querySelector('body').style.backgroundColor = randomColor();
 	return htmlString;
 }
 
+
+/***
+ * Generates a random color string (rgb format) and returns it as a string
+ *
+ *
+ *
+***/
+function randomColor(){
+	let randRed, randGreen, randBlue;
+	randRed = Math.floor(Math.random()*255);
+	randGreen = Math.floor(Math.random()*255);
+	randBlue = Math.floor(Math.random()*255);
+
+	return `rgb(${randRed},${randGreen},${randBlue})`;
+}
 
 
 /***
