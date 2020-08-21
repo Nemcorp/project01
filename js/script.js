@@ -7,8 +7,11 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
+// stores the last chosen random, so that we don't choose it twice in a row
+var lastRandom;
+
 /*** 
- * `quotes` array 
+ * stores quote objects to be chosen at random by the quote generator
 ***/
 const quotes = [
 	{
@@ -46,20 +49,52 @@ const quotes = [
 ];
 
 
+
 /***
- * selects and returns a random quote from the quotes array
+ * Selects and returns a random quote from the quotes array
  * `getRandomQuote` function
+ *
+ *
 ***/
 function getRandomQuote(){
 	let rand = Math.floor(Math.random()*quotes.length);
+
+	// checks to make sure we don't choose the same random quote twice in a row
+	while(lastRandom == rand){
+		rand = Math.floor(Math.random()*quotes.length);
+	}
+	lastRandom = rand;
+
 	return quotes[rand];
 }
 
 
 
 /***
- * `printQuote` function
+ * Creates an html string based on a random quote. Updates the quote-box to 
+ * contain the generated string
+ *
+ *
+ *
 ***/
+function printQuote() {
+	let quote = getRandomQuote();
+	let htmlString = `
+		<p class="quote"> ${quote.quote} </p>
+		<p class="source"> ${quote.source} 
+	`;
+
+	if(quote.citation){
+		htmlString += `<span class="citation"> ${quote.citation} </span>`
+	}
+	if(quote.year){
+		htmlString += `<span class="year"> ${quote.year} </span>`
+	}
+	htmlString += `</p>`;
+
+	document.getElementById('quote-box').innerHTML = htmlString; 
+	return htmlString;
+}
 
 
 
